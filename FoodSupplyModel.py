@@ -37,12 +37,12 @@ class FoodSupplyModel(Model):
             self.fridges.append(fridge)
             self.grid.place_agent(fridge, randomFreeCoordinates())
 
-
         self.supplier = SupplierAgent(1000)
 
         self.truck = TruckAgent(0, capacity=100)
         self.schedule.add(self.truck)
-        self.grid.place_agent(self.truck, randomFreeCoordinates())
+        # self.grid.place_agent(self.truck, randomFreeCoordinates())
+        self.grid.place_agent(self.truck, (0,0))
 
 
     def nextDay(self):
