@@ -9,7 +9,7 @@ class SupplierAgent(Agent):
 
     def loadTrucks(self, model):
         truck = model.truck
-        sortedOrders = sorted(model.orders, key=lambda order: order.totalVolume())
+        sortedOrders = sorted(model.orders, key=lambda order: -order.totalVolume())
         totalVolume = 0
         while sortedOrders and totalVolume + sortedOrders[0].totalVolume() <= truck.capacity:
             order = sortedOrders.pop(0)

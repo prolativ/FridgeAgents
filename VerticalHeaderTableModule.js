@@ -28,6 +28,7 @@ var VerticalHeaderTableModule = function() {
 				if(bold) {
 					dataCell.css('font-weight', 'bold')
 				}
+				dataCell.css("width", "30px")
 				row.append(dataCell);
 			};
 			tbody.append(row);

@@ -10,4 +10,5 @@ class TableVisualization(VisualizationElement):
     	self.getFormattings = getFormattings
 
     def render(self, model):
-    	return {"header": self.getHeader(model), "values": self.getValues(model), "formattings": self.getFormattings(model)}
+    	json = {"header": self.getHeader(model), "values": self.getValues(model), "formattings": self.getFormattings(model), "step" : model.schedule.steps}
+    	return json

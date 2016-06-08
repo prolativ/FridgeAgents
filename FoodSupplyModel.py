@@ -32,8 +32,8 @@ class FoodSupplyModel(Model):
 
         for i in range(self.fridgesCount):
             capacity = 30
-            dailyUsages = {"A": 3, "B": 2, "C": 1}
-            fridge = FridgeAgent(i, capacity, dailyUsages, balancedInitialContents(capacity))
+            dailyUsages = [{"A": 3, "B": 2, "C": 1}, {"A": 4, "B": 1, "C": 2}, {"A": 2, "B": 2, "C": 3}]
+            fridge = FridgeAgent(i, capacity, dailyUsages[i % 3], balancedInitialContents(capacity))
             self.fridges.append(fridge)
             self.grid.place_agent(fridge, randomFreeCoordinates())
 

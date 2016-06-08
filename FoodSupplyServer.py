@@ -40,7 +40,7 @@ def getFridgeTableHeader(model):
     return model.productTypes
 
 def getFridgeTableValues(model):
-    return list(map(lambda fridge: fridge.contents, model.fridges)) + [model.truck.loadProductAmounts()]
+    return list(map(lambda fridge: fridge.contents.copy(), model.fridges.copy())) + [model.truck.loadProductAmounts()]
 
 def getFridgeTableFormatings(model):
     return [{"color": color} for color in colors] + [{"color": "Black", "bold": True}]
