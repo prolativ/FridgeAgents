@@ -1,6 +1,7 @@
 from mesa import Agent
 from FridgeAgent import FridgeAgent
 import random
+from collections import defaultdict
 
 class TruckAgent(Agent):
     def __init__(self, truckId, capacity):
@@ -22,6 +23,14 @@ class TruckAgent(Agent):
             if fridge.fridgeId in self.load:
                 orderedProducts = self.load.pop(fridge.fridgeId)
                 fridge.acceptDelivery(orderedProducts)
+
+    def loadProductAmounts(self):
+        totalAmounts = defaultdict(int)
+        for productAmounts in self.load.values():
+            for product, amount in productAmounts.items():
+                totalAmounts[product] += amount
+        return totalAmounts
+
             
     def addLoad(self, fridgeId, demand):
         self.load[fridgeId] = demand

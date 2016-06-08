@@ -40,14 +40,14 @@ def getFridgeTableHeader(model):
     return model.productTypes
 
 def getFridgeTableValues(model):
-    return list(map(lambda fridge: fridge.contents, model.fridges))
+    return list(map(lambda fridge: fridge.contents, model.fridges)) + [model.truck.loadProductAmounts()]
 
-def getFridgeTableColors(model):
-    return colors
+def getFridgeTableFormatings(model):
+    return [{"color": color} for color in colors] + [{"color": "Black", "bold": True}]
 
 
 grid = CanvasGrid(agentPortrayal, 20, 20, 500, 500)
-fridgesStates = TableVisualization(getFridgeTableHeader, getFridgeTableValues, getFridgeTableColors)
+fridgesStates = TableVisualization(getFridgeTableHeader, getFridgeTableValues, getFridgeTableFormatings)
 
 
 server = ModularServer(FoodSupplyModel, [grid, fridgesStates], "Food supply model", 10, 20, 20)
