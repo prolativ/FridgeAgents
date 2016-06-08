@@ -45,11 +45,16 @@ def getFridgeTableValues(model):
 def getFridgeTableFormatings(model):
     return [{"color": color} for color in colors] + [{"color": "Black", "bold": True}]
 
+class DaysCounter(TextElement):
+    def render(self, model):
+        return "Days: %d" % model.schedule.days 
+
 
 grid = CanvasGrid(agentPortrayal, 20, 20, 500, 500)
 fridgesStates = TableVisualization(getFridgeTableHeader, getFridgeTableValues, getFridgeTableFormatings)
+daysCounter = DaysCounter()
 
 
-server = ModularServer(FoodSupplyModel, [grid, fridgesStates], "Food supply model", 10, 20, 20)
+server = ModularServer(FoodSupplyModel, [grid, fridgesStates, daysCounter], "Food supply model", 10, 20, 20)
 server.port = 8889
 server.launch()
