@@ -9,7 +9,7 @@ var VerticalHeaderTableModule = function() {
 
 		var header = data.header;
 		var values = data.values;
-		var colors = data.colors || [];
+		var formattings = data.formattings
 
 		for(var i = 0; i < header.length; ++i) {
     	var row = $("<tr>");
@@ -20,9 +20,13 @@ var VerticalHeaderTableModule = function() {
 			for(var j = 0; j < values.length; ++j) {
 				var dataCell = $("<td>");
 				dataCell.append(values[j][headerTitle]);
-				var color = colors[j];
+				var color = formattings[j].color;
 				if(color) {
 					dataCell.css("color", color);
+				}
+				var bold = formattings[j].bold;
+				if(bold) {
+					dataCell.css('font-weight', 'bold')
 				}
 				row.append(dataCell);
 			};
